@@ -19,15 +19,15 @@ app.get("/get_news", async (req, res) => {
     }));
     return;
   }
-
-  if (req.query?.after) {
-    const indexAfter = messages.findIndex(({ id }) => id === req.query.after);
-    res.send(JSON.stringify({
-      "total": messages.length,
-      "messages": messages.slice(indexAfter + 1, indexAfter + Number(req.query.limit))
-    }));
-  }
-
+  setTimeout(() => {
+    if (req.query?.after) {
+      const indexAfter = messages.findIndex(({ id }) => id === req.query.after) + 1;
+      res.send(JSON.stringify({
+        "total": messages.length,
+        "messages": messages.slice(indexAfter, indexAfter + Number(req.query.limit))
+      }));
+    }
+  }, 500)
 
 });
 

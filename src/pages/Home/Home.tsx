@@ -1,44 +1,47 @@
 import React, { useEffect, useState } from "react";
 
-import { api } from "../../api/api";
-import { Message, Messages } from "../../models/messages";
+import List from "../../components/List";
+import Filter from "../../components/Filter";
 
-import styles from "./Home.module.css";
+import { API_URL } from "../../consts";
+import { api } from "../../api/api";
+import { State, Messages } from "../../models/messages";
+import AddMessage from "../../components/AddMessage/AddMessage";
+
+const initState = {
+  total: 0,
+  messages: [],
+  filteredMessages: [],
+};
 
 const Home = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [data, setData] = useState<State>(initState);
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     const fetchMessages = async () => {
-      const data = await api<Messages>("http://localhost:8080/get_news?limit=10");
-      setMessages(data.messages);
+      const { messages, total } = await api<Messages>(
+        `${API_URL}/get_news?limit=10`
+      );
+      setData((prev) => ({
+        ...prev,
+        messages,
+        total,
+      }));
     };
 
     fetchMessages().catch(console.error);
   }, []);
 
-  const fetchMore = async (after: string) => {
-    const data = await api<Messages>(`http://localhost:8080/get_news?limit=10&after=${after}`);
-    setMessages(prev => [...prev, ...data.messages]);
-  };
-
   return (
     <div>
-      <button onClick={() => {
-        fetchMore(messages[messages.length - 1].id);
-      }}>FetchMore
-      </button>
-      <ul className={styles.list}>
-        {messages.map(({ id, author, date, text }) => (
-          <li key={id} className={styles.card}>
-            <div className={styles.header}>
-              <div className={styles.author}>{author}</div>
-              <div className={styles.date}>{new Date(date * 1000).toLocaleString("RU")}</div>
-            </div>
-            <div className={styles.text}>{text}</div>
-          </li>
-        ))}
-      </ul>
+      <Filter
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        setData={setData}
+      />
+      <List data={data} setData={setData} inputValue={inputValue} />
+      <AddMessage />
     </div>
   );
 };
