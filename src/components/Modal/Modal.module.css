@@ -1,0 +1,74 @@
+
+.modal {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40,45,60,.64);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  background: white;
+  padding: 20px;
+  border-radius: 32px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+}
+
+.close:hover {
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btnText::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 2px;
+  background-color: #007bfb;
+  transform: translate(-50%, -50%) rotate(45deg);
+  top: 50%;
+}
+
+.btnText::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 2px;
+  background-color: #007bfb;
+  transform-origin: 50% 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  top: 50%;
+}
+
+
+.btnText {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+body {
+  overflow: hidden;
+}
+

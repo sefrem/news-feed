@@ -13,4 +13,4 @@ const Router: React.FC = () => {
   );
 };
 
-export default Router;
+export default React.memo(Router);

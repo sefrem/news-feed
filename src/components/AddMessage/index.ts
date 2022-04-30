@@ -1,1 +1,1 @@
-export { default } from "./AddMessage.module.css";
+export { default } from "./AddMessage";

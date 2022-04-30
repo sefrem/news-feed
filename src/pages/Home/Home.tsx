@@ -6,7 +6,6 @@ import Filter from "../../components/Filter";
 import { API_URL } from "../../consts";
 import { api } from "../../api/api";
 import { State, Messages } from "../../models/messages";
-import AddMessage from "../../components/AddMessage/AddMessage";
 
 const initState = {
   total: 0,
@@ -17,7 +16,6 @@ const initState = {
 const Home = () => {
   const [data, setData] = useState<State>(initState);
   const [inputValue, setInputValue] = useState("");
-
   useEffect(() => {
     const fetchMessages = async () => {
       const { messages, total } = await api<Messages>(
@@ -32,7 +30,6 @@ const Home = () => {
 
     fetchMessages().catch(console.error);
   }, []);
-
   return (
     <div>
       <Filter
@@ -41,7 +38,6 @@ const Home = () => {
         setData={setData}
       />
       <List data={data} setData={setData} inputValue={inputValue} />
-      <AddMessage />
     </div>
   );
 };

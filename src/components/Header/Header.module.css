@@ -1,0 +1,17 @@
+
+.header {
+  box-shadow: 0 4px 4px rgb(0 0 0 / 8%);
+  height: 50px;
+  background: white;
+  width: 100%;
+  border-radius: 0 0 32px 32px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 20px;
+}
