@@ -8,11 +8,12 @@
 .data {
   display: flex;
   flex-direction: column;
+  max-width: 530px;
 }
 
 .message {
-  /*max-width: 338px;*/
-  /*max-height: 95px;*/
+  max-width: 500px;
+  max-height: 400px;
   font-size: 16px;
   padding: 12px;
   border-color: rgba(0,0,0,0.4);
@@ -25,18 +26,7 @@
   font-size: 14px;
 }
 
-.send {
-  background-color: #007bfb;
-  color: #fff;
-  height: 42px;
-  padding: 0 40px;
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 28px;
-  overflow: hidden;
-  cursor: pointer;
-  max-width: 160px;
-  margin-bottom: 12px
+.button {
+  margin-bottom: 12px;
 }
+

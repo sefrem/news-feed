@@ -1,8 +1,9 @@
 import React from "react";
 
-import { Message } from "../../models/messages";
+import { Message } from "../../types/types";
 
 import styles from "./Card.module.css";
+import { Link } from "react-router-dom";
 
 type Props = {
   message: Message;
@@ -10,14 +11,14 @@ type Props = {
 };
 
 const Card: React.FC<Props> = ({ message, forwardRef }) => {
-  const { author, date, text } = message;
+  const { author, date, text, author_id } = message;
   return (
     <li className={styles.card} ref={forwardRef}>
       <div className={styles.header}>
-        <div className={styles.author}>{author}</div>
-        <div className={styles.date}>
-          {new Date(date * 1000).toLocaleString("RU")}
-        </div>
+        <Link to={`/author/${author_id}`} className={styles.author}>
+          <span>{author}</span>
+        </Link>
+        <div className={styles.date}>{new Date(date).toLocaleString("RU")}</div>
       </div>
       <div className={styles.text}>{text}</div>
     </li>

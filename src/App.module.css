@@ -1,8 +1,18 @@
 
 .main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0 20px;
+}
+
+.primaryBg {
+    background: #f4f6fb;
+}
+
+.secondaryBg {
+    background: white;
+    height: 100%;
 }
 

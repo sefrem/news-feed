@@ -1,26 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { State } from "../../models/messages";
+import { MessagesContext } from "../../context/messagesContext";
 
 import styles from "./Filter.module.css";
 
 type Props = {
-  inputValue: string;
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
-  setData: React.Dispatch<React.SetStateAction<State>>;
+  filterValue: string;
+  setFilterValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Filter: React.FC<Props> = ({ inputValue, setData, setInputValue }) => {
+const Filter: React.FC<Props> = ({ filterValue, setFilterValue }) => {
+  const { setData } = useContext(MessagesContext);
   const filterMessages = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-
-    setInputValue(value);
-    setData((prev) => ({
-      ...prev,
-      filteredMessages: value
-        ? prev.messages.filter(({ text }) => text.includes(value))
-        : [],
-    }));
+    setFilterValue(value);
+    setData &&
+      setData((prev) => ({
+        ...prev,
+        filteredMessages: value
+          ? prev.messages.filter(({ text }) => text.includes(value))
+          : [],
+      }));
   };
 
   return (
@@ -30,7 +30,7 @@ const Filter: React.FC<Props> = ({ inputValue, setData, setInputValue }) => {
         id="filter"
         type="text"
         className={styles.input}
-        value={inputValue}
+        value={filterValue}
         onChange={filterMessages}
       />
     </div>

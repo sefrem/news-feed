@@ -1,19 +1,18 @@
 import React, { useContext } from "react";
 
+import Button from "../Button";
+
+import { ModalContext } from "../../context/modalContext";
+
 import styles from "./Header.module.css";
-import { Context } from "../../App";
 
 const Header: React.FC = () => {
-  const { setIsMessageModalOpen } = useContext(Context);
+  const { openModal } = useContext(ModalContext);
 
   return (
     <header className={styles.header}>
       <span className={styles.title}>Messages from your friends</span>
-      <button
-        onClick={() => setIsMessageModalOpen && setIsMessageModalOpen(true)}
-      >
-        Отправить сообщение
-      </button>
+      <Button onClick={openModal} text="Create" className={styles.create} />
     </header>
   );
 };

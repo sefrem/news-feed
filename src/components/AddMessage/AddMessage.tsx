@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+
+import Button from "../Button";
+
+import { MessagesContext } from "../../context/messagesContext";
+import { ModalContext } from "../../context/modalContext";
 
 import styles from "./AddMessage.module.css";
 
-const AddMessage: React.FC = (props) => {
-  console.log("props", props);
+const AddMessage: React.FC = () => {
   const [value, setValue] = useState("");
+  const { sendMessage } = useContext(MessagesContext);
+  const { closeModal } = useContext(ModalContext);
+
+  const handleSendMessage = async () => {
+    if (!value.length) {
+      return;
+    }
+    sendMessage && (await sendMessage(value));
+    closeModal && closeModal();
+  };
 
   return (
     <div className={styles.data}>
@@ -21,7 +35,11 @@ const AddMessage: React.FC = (props) => {
         className={styles.message}
       />
       <span className={styles.counter}>{value.length} / 200</span>
-      <button className={styles.send}>Send</button>
+      <Button
+        onClick={handleSendMessage}
+        text="Send"
+        className={styles.button}
+      />
     </div>
   );
 };
