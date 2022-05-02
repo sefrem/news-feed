@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import Card from "../Card";
+import CardSkeleton from "../CardSkeleton";
 
 import useOnScreen from "../../hooks/useOnScreen";
 import { MessagesContext } from "../../context/messagesContext";
@@ -12,7 +13,7 @@ type Props = {
 };
 
 const List: React.FC<Props> = ({ filterValue }) => {
-  const { fetchMore, data } = useContext(MessagesContext);
+  const { fetchMore, data, isLoading } = useContext(MessagesContext);
   const { messages, filteredMessages, total } = data;
   const [ref, isVisible] = useOnScreen();
 
@@ -21,7 +22,7 @@ const List: React.FC<Props> = ({ filterValue }) => {
       isVisible &&
       messages.length < total &&
       fetchMore &&
-      fetchMore(messages[messages.length - 1].id).catch(console.error);
+      fetchMore(messages[messages.length - 1].id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVisible]);
 
@@ -37,6 +38,7 @@ const List: React.FC<Props> = ({ filterValue }) => {
           forwardRef={index === array.length - 2 ? ref : null}
         />
       ))}
+      {isLoading && <CardSkeleton />}
     </ul>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 import Button from "../Button";
+import ThemeSwitcher from "../ThemeSwitcher";
 
 import { ModalContext } from "../../context/modalContext";
 
@@ -11,8 +12,14 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <span className={styles.title}>Messages from your friends</span>
-      <Button onClick={openModal} text="Create" className={styles.create} />
+      <div className={styles.main}>
+        <span className={styles.title}>Messages from your friends</span>
+        <Button onClick={openModal} text="Create" className={styles.create} />
+      </div>
+
+      <div className={styles.switch}>
+        <ThemeSwitcher />
+      </div>
     </header>
   );
 };

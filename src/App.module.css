@@ -8,11 +8,10 @@
 }
 
 .primaryBg {
-    background: #f4f6fb;
+    background: var(--background);
 }
 
 .secondaryBg {
-    background: white;
-    height: 100%;
+    background: var(--auth-bg);
 }
 

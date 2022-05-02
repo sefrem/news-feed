@@ -10,7 +10,7 @@ const HomePage = () => {
   const [filterValue, setFilterValue] = useState("");
 
   useEffect(() => {
-    fetchMessages && fetchMessages().catch(console.error);
+    fetchMessages && fetchMessages();
   }, [fetchMessages]);
 
   return (

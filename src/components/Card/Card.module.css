@@ -1,8 +1,9 @@
 
 .card {
   max-width: 720px;
+  min-width: 360px;
   border-radius: 32px;
-  background: white;
+  background: var(--primary);
   padding: 32px;
 }
 
@@ -13,17 +14,17 @@
 
 .author {
   font-size: 18px;
-  color: black;
+  color: var(--header-txt);
   text-decoration: none;
 }
 
 .date {
-  color: #8c94a8;
+  color: var(--note-text);
   font-size: 14px;
 }
 
 .text {
-  color: rgba(0,0,0,.68);
+  color: var(--txt);
   font-size: 14px;
   margin-top: 16px;
   line-height: 1.6;

@@ -39,7 +39,7 @@ app.get("/news", async (req, res) => {
         })
       );
     }
-  }, 500);
+  }, 1000);
 });
 
 app.post("/message", async (req, res) => {
@@ -63,9 +63,20 @@ app.get("/author/:id", async (req, res) => {
   const authors: Record<string, Author> = JSON.parse(
     await readFile("./data/authors.json")
   );
+  const authorId = req.params.id;
 
-  if (authors[req.params.id]) {
-    res.send(JSON.stringify(authors[req.params.id]));
+  if (authors[authorId]) {
+    const messages: Message[] = JSON.parse(
+      await readFile("./data/messages.json")
+    );
+    const author = authors[authorId];
+    const authorResponse = {
+      ...author,
+      messages: messages.filter((message) => message.author_id === authorId),
+    };
+    res.send(JSON.stringify(authorResponse));
+  } else {
+    res.sendStatus(404);
   }
 });
 

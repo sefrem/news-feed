@@ -1,0 +1,64 @@
+
+.label {
+  display: flex;
+  width: 65px;
+  height: 35px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6px;
+  background: var(--switch-bg);
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+}
+
+.ball {
+  position: absolute;
+  display: block;
+  width: 25px;
+  height: 25px;
+  top: 5px;
+  left: 5px;
+  background: var(--background);
+  border-radius: 50%;
+  transition: 0.8s;
+}
+
+.label {
+  transition: 0.3s;
+}
+
+.checkbox {
+  display: none;
+}
+
+.checkbox:checked + .label .sun {
+  transform: translateX(-43px) rotate(160deg);
+  opacity: 0;
+}
+
+.checkbox:checked + .label .moon {
+  transform: translateX(0) rotate(0);
+  opacity: 1;
+}
+
+.checkbox:checked + .label .ball {
+  transform: translateX(40px);
+  background: var(--background);
+}
+
+
+.sun, .moon {
+  transition: 0.8s;
+}
+
+.sun {
+  opacity: 1;
+}
+
+.moon {
+  opacity: 0;
+  transform: translateX(43px) rotate(250deg);
+
+}
+

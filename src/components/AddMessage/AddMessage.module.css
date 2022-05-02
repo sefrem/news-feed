@@ -3,6 +3,7 @@
   font-size: 18px;
   font-weight: 500;
   margin-top: 10px;
+  color: var(--header-txt);
 }
 
 .data {
@@ -16,17 +17,20 @@
   max-height: 400px;
   font-size: 16px;
   padding: 12px;
-  border-color: rgba(0,0,0,0.4);
+  background: var(--primary);
+  border-color: var(--textarea-border);
+  color: var(--txt);
 }
 
 .counter {
   text-align: right;
-  color: rgba(0,0,0,0.6);
+  color: var(--note-text);
   margin-top: 8px;
   font-size: 14px;
 }
 
 .button {
   margin-bottom: 12px;
+  padding: 0 34px;
 }
 

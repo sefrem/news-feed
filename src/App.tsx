@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import { useLocation } from "react-router-dom";
-import clsx from "clsx";
 
 import Modal from "./components/Modal/Modal";
 import AddMessage from "./components/AddMessage";
@@ -13,12 +11,9 @@ import styles from "./App.module.css";
 
 function App() {
   const { isMessageModalOpen, closeModal } = useContext(ModalContext);
-  const { pathname } = useLocation();
 
   return (
-    <main
-      className={clsx(pathname === "/" ? styles.primaryBg : styles.secondaryBg)}
-    >
+    <main>
       <Header />
 
       <div className={styles.main}>

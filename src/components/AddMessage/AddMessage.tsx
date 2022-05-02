@@ -9,13 +9,10 @@ import styles from "./AddMessage.module.css";
 
 const AddMessage: React.FC = () => {
   const [value, setValue] = useState("");
-  const { sendMessage } = useContext(MessagesContext);
+  const { sendMessage, isSending } = useContext(MessagesContext);
   const { closeModal } = useContext(ModalContext);
 
   const handleSendMessage = async () => {
-    if (!value.length) {
-      return;
-    }
     sendMessage && (await sendMessage(value));
     closeModal && closeModal();
   };
@@ -39,6 +36,7 @@ const AddMessage: React.FC = () => {
         onClick={handleSendMessage}
         text="Send"
         className={styles.button}
+        disabled={!value.length || isSending}
       />
     </div>
   );

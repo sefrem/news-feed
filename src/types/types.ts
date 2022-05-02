@@ -14,6 +14,7 @@ export type Messages = {
 export type Author = {
   name: string;
   about: string;
+  messages: Message[];
 };
 
 export type State = Messages & { filteredMessages: Message[] };
