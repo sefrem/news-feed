@@ -28,18 +28,16 @@ app.get("/news", async (req, res) => {
     );
     return;
   }
-  setTimeout(() => {
-    if (req.query?.after) {
-      const indexAfter =
-        messages.findIndex(({ id }) => id === req.query.after) + 1;
-      res.send(
-        JSON.stringify({
-          total: messages.length,
-          messages: messages.slice(indexAfter, indexAfter + limit),
-        })
-      );
-    }
-  }, 1000);
+  if (req.query?.after) {
+    const indexAfter =
+      messages.findIndex(({ id }) => id === req.query.after) + 1;
+    res.send(
+      JSON.stringify({
+        total: messages.length,
+        messages: messages.slice(indexAfter, indexAfter + limit),
+      })
+    );
+  }
 });
 
 app.post("/message", async (req, res) => {
