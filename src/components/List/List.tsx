@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 
 import Card from "../Card";
 import CardSkeleton from "../CardSkeleton";
+import Spinner from "../Spinner";
 
 import useOnScreen from "../../hooks/useOnScreen";
 import { MessagesContext } from "../../context/messagesContext";
@@ -25,6 +26,10 @@ const List: React.FC<Props> = ({ filterValue }) => {
       fetchMore(messages[messages.length - 1].id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVisible]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <ul className={styles.list}>
