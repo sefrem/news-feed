@@ -18,7 +18,9 @@ const Filter: React.FC<Props> = ({ filterValue, setFilterValue }) => {
       setData((prev) => ({
         ...prev,
         filteredMessages: value
-          ? prev.messages.filter(({ text }) => text.includes(value))
+          ? prev.messages.filter(({ text }) =>
+              text.toLowerCase().includes(value.toLowerCase())
+            )
           : [],
       }));
   };

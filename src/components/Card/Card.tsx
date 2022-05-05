@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { Message } from "../../types/types";
+import { useTimePassed } from "../../hooks/useTimePassed";
 
 import styles from "./Card.module.css";
 
@@ -13,6 +14,14 @@ type Props = {
 
 const Card: React.FC<Props> = ({ message, forwardRef, showAuthor = true }) => {
   const { author, date, text, author_id } = message;
+  const { timePassed, clear } = useTimePassed(date);
+
+  useEffect(() => {
+    return () => {
+      clear();
+    };
+  }, [clear]);
+
   return (
     <li className={styles.card} ref={forwardRef}>
       <div className={styles.header}>
@@ -21,7 +30,13 @@ const Card: React.FC<Props> = ({ message, forwardRef, showAuthor = true }) => {
             <span>{author}</span>
           </Link>
         )}
-        <div className={styles.date}>{new Date(date).toLocaleString("RU")}</div>
+        {timePassed ? (
+          <div>{`${timePassed}s ago`}</div>
+        ) : (
+          <div className={styles.date}>
+            {new Date(date).toLocaleString("RU")}
+          </div>
+        )}
       </div>
       <div className={styles.text}>{text}</div>
     </li>
