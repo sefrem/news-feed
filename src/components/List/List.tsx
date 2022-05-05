@@ -27,7 +27,7 @@ const List: React.FC<Props> = ({ filterValue }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVisible]);
 
-  if (isLoading) {
+  if (isLoading && !messages.length) {
     return <Spinner />;
   }
 
