@@ -14,7 +14,8 @@ type Props = {
 
 const Card: React.FC<Props> = ({ message, forwardRef, showAuthor = true }) => {
   const { author, date, text, author_id } = message;
-  const { timePassed, clear } = useTimePassed(date);
+  const isToday = new Date(date).getDate() === new Date().getDate();
+  const { timePassed, clear } = useTimePassed(date, isToday);
 
   useEffect(() => {
     return () => {
@@ -32,7 +33,7 @@ const Card: React.FC<Props> = ({ message, forwardRef, showAuthor = true }) => {
         )}
         {timePassed ? (
           <div>{`${timePassed}s ago`}</div>
-        ) : (
+        ) : isToday ? null : (
           <div className={styles.date}>
             {new Date(date).toLocaleString("RU")}
           </div>
