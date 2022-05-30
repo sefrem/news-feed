@@ -1,6 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
 
-import Button from "../Button";
+import Button from "../UI/Button";
 
 class ErrorBoundary extends Component<{ children: ReactNode }> {
   state = {

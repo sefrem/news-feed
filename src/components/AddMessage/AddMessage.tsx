@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import Button from "../Button";
+import Button from "../UI/Button";
 
 import { MessagesContext } from "../../context/messagesContext";
 import { ModalContext } from "../../context/modalContext";
@@ -13,8 +13,8 @@ const AddMessage: React.FC = () => {
   const { closeModal } = useContext(ModalContext);
 
   const handleSendMessage = async () => {
-    sendMessage && (await sendMessage(value));
-    closeModal && closeModal();
+    await sendMessage?.(value);
+    closeModal?.();
   };
 
   return (

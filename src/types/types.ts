@@ -11,10 +11,18 @@ export type Messages = {
   messages: Message[];
 };
 
+export type NewMessage = {
+  total: number;
+  message: Message;
+};
+
 export type Author = {
   name: string;
   about: string;
   messages: Message[];
 };
 
-export type State = Messages & { filteredMessages: Message[] };
+export type State = Messages & {
+  filteredMessages: Message[];
+  filterValue: string;
+};

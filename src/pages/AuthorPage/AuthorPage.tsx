@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import Card from "../../components/Card";
-import Spinner from "../../components/Spinner";
+import Card from "../../components/UI/Card";
+import Spinner from "../../components/UI/Spinner";
 
 import { Author } from "../../types/types";
 import { authorsApi } from "../../api/api";

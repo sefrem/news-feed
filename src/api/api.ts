@@ -1,5 +1,5 @@
 import { API_URL } from "../consts";
-import { Author, Message, Messages } from "../types/types";
+import { Author, Messages, NewMessage } from "../types/types";
 
 const api =
   <T>(url: string) =>
@@ -24,5 +24,5 @@ const api =
   };
 
 export const newsApi = api<Messages>(`${API_URL}/news`);
-export const messageApi = api<Message>(`${API_URL}/message`);
+export const messageApi = api<NewMessage>(`${API_URL}/message`);
 export const authorsApi = api<Author>(`${API_URL}/author`);

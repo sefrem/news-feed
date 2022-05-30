@@ -18,11 +18,6 @@
   text-decoration: none;
 }
 
-.date {
-  color: var(--note-text);
-  font-size: 14px;
-}
-
 .text {
   color: var(--txt);
   font-size: 14px;

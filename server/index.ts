@@ -54,7 +54,7 @@ app.post("/message", async (req, res) => {
   messages.unshift(newMessage);
   await writeFile("./data/messages.json", messages);
 
-  res.send(JSON.stringify(newMessage));
+  res.send(JSON.stringify({ total: messages.length, message: newMessage }));
 });
 
 app.get("/author/:id", async (req, res) => {

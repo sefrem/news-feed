@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-import { Message } from "../../types/types";
-import { useTimePassed } from "../../hooks/useTimePassed";
+import { Message } from "../../../types/types";
 
 import styles from "./Card.module.css";
+import CardDate from "../CardDate";
 
 type Props = {
   message: Message;
@@ -14,14 +14,6 @@ type Props = {
 
 const Card: React.FC<Props> = ({ message, forwardRef, showAuthor = true }) => {
   const { author, date, text, author_id } = message;
-  const isToday = new Date(date).getDate() === new Date().getDate();
-  const { timePassed, clear } = useTimePassed(date, isToday);
-
-  useEffect(() => {
-    return () => {
-      clear();
-    };
-  }, [clear]);
 
   return (
     <li className={styles.card} ref={forwardRef}>
@@ -31,13 +23,7 @@ const Card: React.FC<Props> = ({ message, forwardRef, showAuthor = true }) => {
             <span>{author}</span>
           </Link>
         )}
-        {timePassed ? (
-          <div>{`${timePassed}s ago`}</div>
-        ) : isToday ? null : (
-          <div className={styles.date}>
-            {new Date(date).toLocaleString("RU")}
-          </div>
-        )}
+        <CardDate date={date} />
       </div>
       <div className={styles.text}>{text}</div>
     </li>

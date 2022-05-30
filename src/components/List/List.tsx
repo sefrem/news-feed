@@ -1,29 +1,24 @@
 import React, { useContext, useEffect } from "react";
 
-import Card from "../Card";
-import CardSkeleton from "../CardSkeleton";
-import Spinner from "../Spinner";
+import Card from "../UI/Card";
+import CardSkeleton from "../UI/CardSkeleton";
+import Spinner from "../UI/Spinner";
 
 import useOnScreen from "../../hooks/useOnScreen";
 import { MessagesContext } from "../../context/messagesContext";
 
 import styles from "./List.module.css";
 
-type Props = {
-  filterValue: string;
-};
-
-const List: React.FC<Props> = ({ filterValue }) => {
+const List: React.FC = () => {
   const { fetchMore, data, isLoading } = useContext(MessagesContext);
-  const { messages, filteredMessages, total } = data;
+  const { messages, filterValue, filteredMessages, total } = data;
   const [ref, isVisible] = useOnScreen();
 
   useEffect(() => {
     !filterValue.length &&
       isVisible &&
       messages.length < total &&
-      fetchMore &&
-      fetchMore(messages[messages.length - 1].id);
+      fetchMore?.(messages[messages.length - 1].id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVisible]);
 

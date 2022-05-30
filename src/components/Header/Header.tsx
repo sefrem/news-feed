@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
-import Button from "../Button";
-import ThemeSwitcher from "../ThemeSwitcher";
+import Button from "../UI/Button";
+import ThemeSwitcher from "../UI/ThemeSwitcher";
 
 import { ModalContext } from "../../context/modalContext";
 

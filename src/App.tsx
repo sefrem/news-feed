@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import Modal from "./components/Modal/Modal";
+import Modal from "./components/UI/Modal/Modal";
 import AddMessage from "./components/AddMessage";
 import Router from "./Router";
 
