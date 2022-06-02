@@ -18,7 +18,7 @@ const AddMessage: React.FC = () => {
   };
 
   return (
-    <div className={styles.data}>
+    <form className={styles.data}>
       <h4 className={styles.header}>Add you message</h4>
       <textarea
         value={value}
@@ -38,7 +38,7 @@ const AddMessage: React.FC = () => {
         className={styles.button}
         disabled={!value.length || isSending}
       />
-    </div>
+    </form>
   );
 };
 

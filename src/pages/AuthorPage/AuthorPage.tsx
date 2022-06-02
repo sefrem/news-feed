@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 import Card from "../../components/UI/Card";
 import Spinner from "../../components/UI/Spinner";
@@ -44,7 +45,7 @@ const AuthorPage = () => {
       {author?.about && (
         <div
           className={styles.about}
-          dangerouslySetInnerHTML={{ __html: author.about }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(author.about) }}
         />
       )}
       <div>
