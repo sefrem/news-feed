@@ -23,4 +23,5 @@
   font-size: 14px;
   margin-top: 16px;
   line-height: 1.6;
+  word-break: break-all;
 }

@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import CardDate from "../CardDate";
+
 import { Message } from "../../../types/types";
 
 import styles from "./Card.module.css";
-import CardDate from "../CardDate";
 
 type Props = {
   message: Message;
