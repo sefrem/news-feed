@@ -134,7 +134,7 @@ export const MessagesContextProvider: React.FC<{
     } finally {
       setIsLoading(false);
     }
-  }, [data.messages]);
+  }, [messages]);
 
   const sendMessage = useCallback(async (value: string) => {
     setIsSending(true);
