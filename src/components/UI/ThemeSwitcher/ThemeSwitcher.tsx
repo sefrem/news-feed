@@ -1,9 +1,10 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
+import clsx from "clsx";
 
 import styles from "./ThemeSwitcher.module.css";
 
 const ThemeSwitcher = () => {
-  const ref = useRef<HTMLInputElement>(null);
+  const [isSwitched, setIsSwitched] = useState(Boolean);
   const handleThemeSwitch = () => {
     const currentMode = document.documentElement.getAttribute(
       "data-user-color-scheme"
@@ -11,12 +12,11 @@ const ThemeSwitcher = () => {
     const newMode = currentMode === "light" ? "dark" : "light";
     localStorage.setItem("theme", newMode);
     document.documentElement.setAttribute("data-user-color-scheme", newMode);
+    setIsSwitched(localStorage.getItem("theme") === "dark");
   };
 
   useLayoutEffect(() => {
-    if (ref?.current) {
-      ref.current.checked = localStorage.getItem("theme") === "dark";
-    }
+    setIsSwitched(localStorage.getItem("theme") === "dark");
   }, []);
 
   useEffect(() => {
@@ -28,20 +28,19 @@ const ThemeSwitcher = () => {
   }, []);
 
   return (
-    <div className={styles.switch}>
-      <input
-        type="checkbox"
-        id="switch"
-        className={styles.checkbox}
-        onChange={handleThemeSwitch}
-        ref={ref}
-      />
-      <label htmlFor="switch" className={styles.label}>
-        <span className={styles.moon}>🌜</span>
-        <span className={styles.sun}>🌞</span>
-        <span className={styles.ball} />
-      </label>
-    </div>
+    <button onClick={handleThemeSwitch} className={styles.button}>
+      <span className={styles.label}>
+        <span className={clsx(styles.moon, isSwitched && styles.moonSwitched)}>
+          🌜
+        </span>
+        <span className={clsx(styles.sun, isSwitched && styles.sunSwitched)}>
+          🌞
+        </span>
+        <span
+          className={clsx(styles.ball, isSwitched && styles.ballSwitched)}
+        />
+      </span>
+    </button>
   );
 };
 

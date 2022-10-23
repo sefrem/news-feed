@@ -1,23 +1,16 @@
-
 .modal {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  background: var(--primary);
+  border-radius: 32px;
+}
+
+.modal::backdrop {
   background: var(--overlay);
   backdrop-filter: blur(12px);
 }
 
 .content {
-  background: var(--primary);
   padding: 20px;
-  border-radius: 32px;
   position: sticky;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   max-width: fit-content;
 }
 

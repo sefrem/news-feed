@@ -1,20 +1,20 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import Button from "../UI/Button";
 import ThemeSwitcher from "../UI/ThemeSwitcher";
 
-import { ModalContext } from "../../context/modalContext";
-
 import styles from "./Header.module.css";
 
-const Header: React.FC = () => {
-  const { openModal } = useContext(ModalContext);
+type Props = {
+  openDialog: () => void;
+};
 
+const Header: React.FC<Props> = ({ openDialog }) => {
   return (
     <header className={styles.header}>
       <div className={styles.main}>
         <span className={styles.title}>Messages from your friends</span>
-        <Button onClick={openModal} text="Create" className={styles.create} />
+        <Button onClick={openDialog} text="Create" className={styles.create} />
       </div>
 
       <div className={styles.switch}>

@@ -50,11 +50,13 @@ li {
   --color-dark-9: #6C7174;
   --color-dark-10: #868686;
   --color-bright: #007bfb;
+  --color-bright-1: #012DC4FF;
   --color-red: #ef5050;
 
   --background: var(--color-light-3);
   --primary: var(--color-light-1);
   --button: var(--color-bright);
+  --button-outline: var(--color-bright-1);
   --header-txt: var(--color-dark-1);
   --txt: var(--color-dark-3);
   --note-text: var(--color-light-6);

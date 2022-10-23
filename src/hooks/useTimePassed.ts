@@ -1,7 +1,7 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
-const SECONDMS = 1000;
-const MINUTEMS = 60000;
+const SECONDS = 1000;
+const MINUTES = 60000;
 const MINUTE = 60;
 const HOUR = 3600;
 
@@ -9,7 +9,7 @@ const getTimeDiff = (date: number) =>
   Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
 
 export const useTimePassed = (date: number) => {
-  const [tick, setTick] = useState(SECONDMS);
+  const [tick, setTick] = useState(SECONDS);
   const [timePassed, setTimePassed] = useState("");
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isToday = new Date(date).getDate() === new Date().getDate();
@@ -33,11 +33,11 @@ export const useTimePassed = (date: number) => {
       }
       if (diff === MINUTE || (diff > MINUTE && diff < HOUR)) {
         setTimePassed(`${Math.trunc(diff / MINUTE)}m`);
-        setTick(MINUTEMS);
+        setTick(MINUTES);
       }
       if (diff > HOUR) {
-        setTimePassed(`${Math.trunc(diff / MINUTE)}m`);
-        setTick(MINUTEMS);
+        setTimePassed(`${Math.trunc(diff / HOUR)}h`);
+        setTick(HOUR);
       }
     },
     [clear, isToday]

@@ -1,7 +1,7 @@
 
 .button {
   background-color: var(--button);
-  color: #fff;
+  color: var(--color-light-1);
   height: 42px;
   padding: 0 24px;
   font-size: 16px;
@@ -12,6 +12,10 @@
   overflow: hidden;
   cursor: pointer;
   width: fit-content;
+}
+
+.button:focus {
+  outline-color: var(--button-outline);
 }
 
 .disabled {

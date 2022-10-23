@@ -10,27 +10,27 @@ import { MessagesContext } from "../../context/messagesContext";
 import styles from "./List.module.css";
 
 const List: React.FC = () => {
-  const { fetchMore, data, isLoading } = useContext(MessagesContext);
-  const { messages, filterValue, filteredMessages, total } = data;
+  const { shouldFetchMore, fetchMore, data, isLoading } = useContext(MessagesContext);
+  const { messages, filterValue, filteredMessages } = data;
   const [ref, isVisible] = useOnScreen();
 
   useEffect(() => {
-    !filterValue.length &&
-      isVisible &&
-      messages.length < total &&
-      fetchMore?.(messages[messages.length - 1].id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    shouldFetchMore &&
+    isVisible &&
+    fetchMore?.();
   }, [isVisible]);
 
   if (isLoading && !messages.length) {
     return <Spinner />;
   }
 
+  const isFilteredMessages = filterValue.length > 0 || filteredMessages.length;
+
   return (
     <ul className={styles.list}>
-      {(filterValue.length > 0 || filteredMessages.length
-        ? filteredMessages
-        : messages
+      {(isFilteredMessages
+          ? filteredMessages
+          : messages
       ).map((message, index, array) => (
         <Card
           key={message.id}

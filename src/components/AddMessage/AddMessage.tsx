@@ -4,15 +4,18 @@ import clsx from "clsx";
 import Button from "../UI/Button";
 
 import { MessagesContext } from "../../context/messagesContext";
-import { ModalContext } from "../../context/modalContext";
 import { useValidation } from "../../hooks/useValidation";
 
 import styles from "./AddMessage.module.css";
 
-const AddMessage: React.FC = () => {
+type Props = {
+  closeDialog: () => void
+  textareaRef: React.RefObject<HTMLTextAreaElement>
+}
+
+const AddMessage: React.FC<Props> = ({ closeDialog, textareaRef }) => {
   const [value, setValue] = useState("");
   const { sendMessage, isSending } = useContext(MessagesContext);
-  const { closeModal } = useContext(ModalContext);
   const { error, validate } = useValidation();
 
   const handleSendMessage = async () => {
@@ -21,11 +24,15 @@ const AddMessage: React.FC = () => {
       return;
     }
     await sendMessage?.(value);
-    closeModal?.();
+    closeDialog();
+    setValue("");
   };
 
   return (
-    <div className={styles.data}>
+    <form className={styles.data} onSubmit={e => {
+      e.preventDefault();
+      handleSendMessage();
+    }}>
       <h4 className={styles.header}>Add you message</h4>
       <textarea
         value={value}
@@ -36,18 +43,19 @@ const AddMessage: React.FC = () => {
         cols={45}
         rows={5}
         className={clsx(styles.message, error && styles.messageError)}
+        ref={textareaRef}
       />
       <div className={styles.textInfo}>
         <span className={styles.error}>{error}</span>
         <span className={styles.counter}>{value.length} / 200</span>
       </div>
       <Button
-        onClick={handleSendMessage}
+        type="submit"
         text="Send"
         className={styles.button}
         disabled={isSending}
       />
-    </div>
+    </form>
   );
 };
 
