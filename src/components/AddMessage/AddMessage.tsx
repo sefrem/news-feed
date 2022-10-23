@@ -33,8 +33,13 @@ const AddMessage: React.FC<Props> = ({ closeDialog, textareaRef }) => {
       e.preventDefault();
       handleSendMessage();
     }}>
-      <h4 className={styles.header}>Add you message</h4>
+      <label htmlFor="message">
+        <h4 className={styles.header}>Add you message</h4>
+      </label>
+
       <textarea
+        id="message"
+        name="message"
         value={value}
         onChange={(e) => {
           setValue(e.target.value);

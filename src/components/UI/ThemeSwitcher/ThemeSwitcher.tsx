@@ -28,7 +28,11 @@ const ThemeSwitcher = () => {
   }, []);
 
   return (
-    <button onClick={handleThemeSwitch} className={styles.button}>
+    <button
+      onClick={handleThemeSwitch}
+      className={styles.button}
+      aria-label="theme switcher"
+    >
       <span className={styles.label}>
         <span className={clsx(styles.moon, isSwitched && styles.moonSwitched)}>
           🌜

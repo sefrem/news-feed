@@ -13,8 +13,13 @@ const Header: React.FC<Props> = ({ openDialog }) => {
   return (
     <header className={styles.header}>
       <div className={styles.main}>
-        <span className={styles.title}>Messages from your friends</span>
-        <Button onClick={openDialog} text="Create" className={styles.create} />
+        <h1 className={styles.title}>Messages from your friends</h1>
+        <Button
+          onClick={openDialog}
+          text="Create"
+          className={styles.create}
+          aria-label="Open Dialog"
+        />
       </div>
 
       <div className={styles.switch}>
