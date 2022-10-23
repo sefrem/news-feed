@@ -49,7 +49,7 @@ li {
   --color-dark-8: #50545A;
   --color-dark-9: #6C7174;
   --color-dark-10: #868686;
-  --color-bright: #007bfb;
+  --color-bright: #006de1;
   --color-bright-1: #012DC4FF;
   --color-red: #ef5050;
 
@@ -59,7 +59,7 @@ li {
   --button-outline: var(--color-bright-1);
   --header-txt: var(--color-dark-1);
   --txt: var(--color-dark-3);
-  --note-text: var(--color-light-6);
+  --note-text: var(--color-dark-9);
   --textarea-border: var(--color-dark-2);
   --overlay: var(--color-dark-6);
   --btn: var(--color-light-4);
@@ -75,6 +75,7 @@ li {
   --primary: var(--color-dark-7);
   --header-txt: var(--color-light-1);
   --txt: var(--color-light-5);
+  --note-text: var(--color-light-5);
   --border: var(--color-light-2);
   --textarea-border: var(--color-dark-9);
   --overlay: var(--color-dark-4);

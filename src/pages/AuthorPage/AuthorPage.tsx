@@ -39,7 +39,7 @@ const AuthorPage = () => {
 
   return (
     <div className={styles.author}>
-      <h4 className={styles.title}>{author?.name}</h4>
+      <h1 className={styles.title}>{author?.name}</h1>
       <div className={styles.occupation}>{generateOccupation()}</div>
       <p className={styles.heading}>About</p>
       {author?.about && (

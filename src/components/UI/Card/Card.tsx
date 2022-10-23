@@ -20,7 +20,11 @@ const Card: React.FC<Props> = ({ message, forwardRef, showAuthor = true }) => {
     <li className={styles.card} ref={forwardRef}>
       <div className={styles.header}>
         {showAuthor && (
-          <Link to={`/author/${author_id}`} className={styles.author}>
+          <Link
+            to={`/author/${author_id}`}
+            className={styles.author}
+            aria-label="Author Page"
+          >
             <span>{author}</span>
           </Link>
         )}

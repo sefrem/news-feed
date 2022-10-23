@@ -12,7 +12,11 @@ const Dialog: React.FC<Props> = ({ children, closeDialog, dialogRef }) => {
   return (
     <dialog className={styles.modal} ref={dialogRef}>
       <div className={styles.content}>
-        <button className={styles.close} onClick={closeDialog}>
+        <button
+          className={styles.close}
+          onClick={closeDialog}
+          aria-label="Close Dialog"
+        >
           <span className={styles.btnText}></span>
         </button>
         {children}
