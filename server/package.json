@@ -6,7 +6,7 @@
     "node": "16.x"
   },
   "scripts": {
-    "start": "npm run build && node dist/server.js",
+    "start": "NODE_ENV=development npm run build && node dist/server.js",
     "start-dev": "nodemon index.ts",
     "build": "webpack"
   },
