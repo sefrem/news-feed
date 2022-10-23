@@ -6,9 +6,8 @@
     "node": "16.x"
   },
   "scripts": {
-    "start": "npm run build && node dist/server.js",
-    "start-dev": "nodemon index.ts",
-    "build": "webpack"
+    "start": "node dist/server.js",
+    "start-dev": "nodemon index.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
