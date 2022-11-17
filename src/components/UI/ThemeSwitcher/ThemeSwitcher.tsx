@@ -4,7 +4,7 @@ import clsx from "clsx";
 import styles from "./ThemeSwitcher.module.css";
 
 const ThemeSwitcher = () => {
-  const [isSwitched, setIsSwitched] = useState(Boolean);
+  const [isSwitched, setIsSwitched] = useState(false);
   const handleThemeSwitch = () => {
     const currentMode = document.documentElement.getAttribute(
       "data-user-color-scheme"
@@ -16,6 +16,12 @@ const ThemeSwitcher = () => {
   };
 
   useLayoutEffect(() => {
+    const preferredDarkColorScheme = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    if (!localStorage.getItem("theme") && preferredDarkColorScheme) {
+      localStorage.setItem("theme", "dark");
+    }
     setIsSwitched(localStorage.getItem("theme") === "dark");
   }, []);
 
