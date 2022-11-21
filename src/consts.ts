@@ -1,3 +1,3 @@
-export const API_URL = "https://messages-backend-123.herokuapp.com";
+export const API_URL = "http://localhost:8080";
 
 //"https://messages-backend-123.herokuapp.com"
