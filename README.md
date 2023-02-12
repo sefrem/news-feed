@@ -2,9 +2,6 @@
 
 Check messages, add new ones, check author info.
 
-## Check out the deployed version
-https://messages-test-1.herokuapp.com/
-
 ### How to run locally
 
 From the root:
